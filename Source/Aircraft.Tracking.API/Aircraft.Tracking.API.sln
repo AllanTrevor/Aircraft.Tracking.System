@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApplicationCore", "ApplicationCore", "{0EC5F263-F7F7-4320-9FE7-A23594EFCE50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Distributed Services", "Distributed Services", "{8BA9F33C-E182-44EF-95FF-EF107E17162A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A0A02854-2511-4B98-B76F-78647B341619}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{C11526EF-E3BA-4E32-B65F-158C4CF94FAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aircraft.Tracking.Core", "Aircraft.Tracking.Core\Aircraft.Tracking.Core.csproj", "{D8244D82-45AE-4857-9240-483EB69EF5F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aircraft.Tracking.Api", "Aircraft.Tracking.Api\Aircraft.Tracking.Api.csproj", "{28EB78AE-7C8F-4F9F-99EC-1B22549D460C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aircraft.Tracking.DataAccess.Dapper", "Aircraft.Tracking.DataAccess.Dapper\Aircraft.Tracking.DataAccess.Dapper.csproj", "{7FC738F2-AE2D-42FA-B306-9373AB195949}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aircraft.Tracking.Services", "Aircraft.Tracking.Services\Aircraft.Tracking.Services.csproj", "{D1EC225E-22C1-43D5-BE5B-316D31CB7CD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{CFEB45F6-DB58-4BA9-99D2-2A55AB9E7446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rusada.DataAccess.Dapper", "Rusada.DataAccess.Dapper\Rusada.DataAccess.Dapper.csproj", "{DC1B40B7-E9AF-4DF5-8083-B2BF69F7A139}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rusada.Core.Data", "Rusada.Core.Data\Rusada.Core.Data.csproj", "{448A5A66-804D-4EF1-BA1F-3629874EC57A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8244D82-45AE-4857-9240-483EB69EF5F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8244D82-45AE-4857-9240-483EB69EF5F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8244D82-45AE-4857-9240-483EB69EF5F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8244D82-45AE-4857-9240-483EB69EF5F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28EB78AE-7C8F-4F9F-99EC-1B22549D460C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28EB78AE-7C8F-4F9F-99EC-1B22549D460C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28EB78AE-7C8F-4F9F-99EC-1B22549D460C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28EB78AE-7C8F-4F9F-99EC-1B22549D460C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC738F2-AE2D-42FA-B306-9373AB195949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC738F2-AE2D-42FA-B306-9373AB195949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC738F2-AE2D-42FA-B306-9373AB195949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC738F2-AE2D-42FA-B306-9373AB195949}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1EC225E-22C1-43D5-BE5B-316D31CB7CD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EC225E-22C1-43D5-BE5B-316D31CB7CD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EC225E-22C1-43D5-BE5B-316D31CB7CD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EC225E-22C1-43D5-BE5B-316D31CB7CD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC1B40B7-E9AF-4DF5-8083-B2BF69F7A139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC1B40B7-E9AF-4DF5-8083-B2BF69F7A139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC1B40B7-E9AF-4DF5-8083-B2BF69F7A139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC1B40B7-E9AF-4DF5-8083-B2BF69F7A139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{448A5A66-804D-4EF1-BA1F-3629874EC57A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{448A5A66-804D-4EF1-BA1F-3629874EC57A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{448A5A66-804D-4EF1-BA1F-3629874EC57A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{448A5A66-804D-4EF1-BA1F-3629874EC57A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C11526EF-E3BA-4E32-B65F-158C4CF94FAD} = {0EC5F263-F7F7-4320-9FE7-A23594EFCE50}
+		{D8244D82-45AE-4857-9240-483EB69EF5F6} = {0EC5F263-F7F7-4320-9FE7-A23594EFCE50}
+		{28EB78AE-7C8F-4F9F-99EC-1B22549D460C} = {8BA9F33C-E182-44EF-95FF-EF107E17162A}
+		{7FC738F2-AE2D-42FA-B306-9373AB195949} = {A0A02854-2511-4B98-B76F-78647B341619}
+		{D1EC225E-22C1-43D5-BE5B-316D31CB7CD0} = {A0A02854-2511-4B98-B76F-78647B341619}
+		{CFEB45F6-DB58-4BA9-99D2-2A55AB9E7446} = {A0A02854-2511-4B98-B76F-78647B341619}
+		{DC1B40B7-E9AF-4DF5-8083-B2BF69F7A139} = {CFEB45F6-DB58-4BA9-99D2-2A55AB9E7446}
+		{448A5A66-804D-4EF1-BA1F-3629874EC57A} = {C11526EF-E3BA-4E32-B65F-158C4CF94FAD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A72128F0-A3E3-4747-90E5-35DA60365365}
+	EndGlobalSection
+EndGlobal

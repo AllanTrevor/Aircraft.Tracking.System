@@ -1,0 +1,38 @@
+Aircraft.Tracking.
+
+Aircraft.Tracking.DataAccess.Dapper
+Aircraft.Tracking.Services
+
+
+Rusada.DataAccess.Dapper
+Rusada.Core.Data
+
+AircraftTrackingEnum
+IAircraftTrackingUnitOfWork
+
+
+ISalesIncentiveUnitOfWork
+
+IAircraftService
+
+AircraftTracker
+
+AircraftTrackerConnectionFactory
+
+AircraftInformation
+
+AircraftTrackerConnectionFactory
+
+
+
+
+===================================================
+
+AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Aircraft.Tracking.Core.Services.IAircraftInformationService Lifetime: Transient ImplementationType: Aircraft.Tracking.Services.AircraftInformationService': Unable to resolve service for type 'Aircraft.Tracking.Core.IAircraftTrackingUnitOfWork' while attempting to activate 'Aircraft.Tracking.Services.AircraftInformationService'.)
+
+
+Severity	Code	Description	Project	File	Line	Suppression State
+Error	CS1069	The type name 'SqlConnection' could not be found in the namespace 'System.Data.SqlClient'. This type has been forwarded to assembly 'System.Data.SqlClient, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' Consider adding a reference to that assembly.	Aircraft.Tracking.DataAccess.Dapper	D:\RandD\Assignment\Aircraft.Tracking.System\API\Aircraft.Tracking.API\Aircraft.Tracking.DataAccess.Dapper\AircraftTrackerConnectionFactory.cs	20	Active
+
+
+System.ArgumentException: 'Cannot instantiate implementation type 'Aircraft.Tracking.Api.Common.IAircraftTrackerResponse' for service type 'Aircraft.Tracking.Api.Common.IAircraftTrackerResponse'.'

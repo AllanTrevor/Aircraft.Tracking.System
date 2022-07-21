@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\WeatherForecastController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aircraft.Tracking.Core\Aircraft.Tracking.Core.csproj" />
+    <ProjectReference Include="..\Aircraft.Tracking.DataAccess.Dapper\Aircraft.Tracking.DataAccess.Dapper.csproj" />
+    <ProjectReference Include="..\Aircraft.Tracking.Services\Aircraft.Tracking.Services.csproj" />
+    <ProjectReference Include="..\Rusada.Core.Data\Rusada.Core.Data.csproj" />
+    <ProjectReference Include="..\Rusada.DataAccess.Dapper\Rusada.DataAccess.Dapper.csproj" />
+  </ItemGroup>
+
+</Project>

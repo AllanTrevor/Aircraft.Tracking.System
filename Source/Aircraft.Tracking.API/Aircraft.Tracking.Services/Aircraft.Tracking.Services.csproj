@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.4.0" />
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aircraft.Tracking.Core\Aircraft.Tracking.Core.csproj" />
+    <ProjectReference Include="..\Aircraft.Tracking.DataAccess.Dapper\Aircraft.Tracking.DataAccess.Dapper.csproj" />
+    <ProjectReference Include="..\Rusada.Core.Data\Rusada.Core.Data.csproj" />
+  </ItemGroup>
+
+</Project>
