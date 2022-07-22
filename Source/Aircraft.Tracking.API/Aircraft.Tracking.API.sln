@@ -11,19 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{C11526EF-E3BA-4E32-B65F-158C4CF94FAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aircraft.Tracking.Core", "Aircraft.Tracking.Core\Aircraft.Tracking.Core.csproj", "{D8244D82-45AE-4857-9240-483EB69EF5F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aircraft.Tracking.Core", "Aircraft.Tracking.Core\Aircraft.Tracking.Core.csproj", "{D8244D82-45AE-4857-9240-483EB69EF5F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aircraft.Tracking.Api", "Aircraft.Tracking.Api\Aircraft.Tracking.Api.csproj", "{28EB78AE-7C8F-4F9F-99EC-1B22549D460C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aircraft.Tracking.Api", "Aircraft.Tracking.Api\Aircraft.Tracking.Api.csproj", "{28EB78AE-7C8F-4F9F-99EC-1B22549D460C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aircraft.Tracking.DataAccess.Dapper", "Aircraft.Tracking.DataAccess.Dapper\Aircraft.Tracking.DataAccess.Dapper.csproj", "{7FC738F2-AE2D-42FA-B306-9373AB195949}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aircraft.Tracking.DataAccess.Dapper", "Aircraft.Tracking.DataAccess.Dapper\Aircraft.Tracking.DataAccess.Dapper.csproj", "{7FC738F2-AE2D-42FA-B306-9373AB195949}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aircraft.Tracking.Services", "Aircraft.Tracking.Services\Aircraft.Tracking.Services.csproj", "{D1EC225E-22C1-43D5-BE5B-316D31CB7CD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aircraft.Tracking.Services", "Aircraft.Tracking.Services\Aircraft.Tracking.Services.csproj", "{D1EC225E-22C1-43D5-BE5B-316D31CB7CD0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{CFEB45F6-DB58-4BA9-99D2-2A55AB9E7446}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rusada.DataAccess.Dapper", "Rusada.DataAccess.Dapper\Rusada.DataAccess.Dapper.csproj", "{DC1B40B7-E9AF-4DF5-8083-B2BF69F7A139}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rusada.DataAccess.Dapper", "Rusada.DataAccess.Dapper\Rusada.DataAccess.Dapper.csproj", "{DC1B40B7-E9AF-4DF5-8083-B2BF69F7A139}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rusada.Core.Data", "Rusada.Core.Data\Rusada.Core.Data.csproj", "{448A5A66-804D-4EF1-BA1F-3629874EC57A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rusada.Core.Data", "Rusada.Core.Data\Rusada.Core.Data.csproj", "{448A5A66-804D-4EF1-BA1F-3629874EC57A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

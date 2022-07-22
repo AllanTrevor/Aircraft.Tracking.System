@@ -5,12 +5,16 @@ using Rusada.Core.Data;
 using Aircraft.Tracking.Core;
 using Aircraft.Tracking.Core.Services;
 using Aircraft.Tracking.Core.Poco;
+using Aircraft.Tracking.Core.Models;
+using Microsoft.AspNetCore.Http;
+using Aircraft.Tracking.DataAccess.Dapper;
 
 namespace Aircraft.Tracking.Services
 {
     public class AircraftInformationService : Service<AircraftInformation>, IAircraftInformationService
     {
-        
+        IAircraftTrackingUnitOfWork unitOfWork;
+
         public AircraftInformationService(IAircraftTrackingUnitOfWork UnitOfWork) : base(UnitOfWork)
         {
 
@@ -34,16 +38,17 @@ namespace Aircraft.Tracking.Services
 			return result;
 		}
 
-		//public bool SaveTeam(TeamModel teamModel, HttpContext httpContext, string createdByName)
-		//{
-		//	teamModel.Team.CreatedByName = createdByName;
-		//	AuditLog auditData = this.unitOfWork.Repository<Team>().SaveTeam(teamModel.Team, teamModel.TeamDetailList);
-		//	auditData.Data = teamModel.Team.Code + '-' + teamModel.Team.Name;
-		//	if (auditData.Result)
-		//	{
-		//		auditService.CreateAuditLog(0, ActionTypeEnum.Create.ToString(), auditData, httpContext, createdByName);
-		//	}
-		//	return auditData.Result;
-		//}
-	}
+        public bool SaveAircraftInformation(AircraftInformationModels aircraftInformationModels, HttpContext httpContext)
+        {
+            //teamModel.Team.CreatedByName = createdByName;
+            var result = this.unitOfWork.Repository<AircraftInformation>().SaveAircraftInformation(aircraftInformationModels.AircraftInformation);
+
+            //auditData.Data = teamModel.Team.Code + '-' + teamModel.Team.Name;
+            //if (auditData.Result)
+            //{
+            //    auditService.CreateAuditLog(0, ActionTypeEnum.Create.ToString(), auditData, httpContext, createdByName);
+            //}
+            return result;
+        }
+    }
 }

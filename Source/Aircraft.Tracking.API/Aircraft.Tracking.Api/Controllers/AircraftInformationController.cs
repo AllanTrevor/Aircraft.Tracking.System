@@ -6,6 +6,7 @@ using Aircraft.Tracking.Core.Poco;
 using Aircraft.Tracking.Core.Services;
 using Aircraft.Tracking.Api.Common;
 using AutoMapper;
+using Aircraft.Tracking.Core.Models;
 
 namespace Aircraft.Tracking.Api.Controllers
 {
@@ -37,6 +38,10 @@ namespace Aircraft.Tracking.Api.Controllers
         [Route("Insert")]
         public AircraftTrackerResponse Insert([FromBody] AircraftInformation aircraftInformation)
         {
+            if (!ModelState.IsValid)
+            {
+                return this.response.GenerateResponseMessage("Error", "", "", "", "Validations Failed");
+            }
             aircraftInformation.CreatedDate = DateTime.Now;
             aircraftInformation.ModifiedDate = null;
             long id = service.Insert(aircraftInformation);
@@ -57,6 +62,11 @@ namespace Aircraft.Tracking.Api.Controllers
         [Route("Update")]
         public AircraftTrackerResponse Update([FromBody] AircraftInformation aircraftInformation)
         {
+            if (!ModelState.IsValid)
+            {
+                return this.response.GenerateResponseMessage("Error", "", "", "", "Validations Failed");
+            }
+
             aircraftInformation.ModifiedDate = DateTime.Now;
 
             bool id = service.Update(aircraftInformation);
@@ -75,6 +85,7 @@ namespace Aircraft.Tracking.Api.Controllers
         [Route("Delete")]
         public AircraftTrackerResponse Delete([FromBody] AircraftInformation aircraftInformation)
         {
+
             aircraftInformation.ModifiedDate = DateTime.Now;
 
             bool id = service.Delete(aircraftInformation);
@@ -89,8 +100,8 @@ namespace Aircraft.Tracking.Api.Controllers
         }
 
         [HttpGet]
-        [Route("GetById")]
-        public AircraftTrackerResponse GetById(string id)
+        [Route("GetById/{id:int}")]
+        public AircraftTrackerResponse GetById([FromRoute]string id)
         {
             AircraftInformation aircraftInformation = service.Get(id);
             if (aircraftInformation != null)
@@ -104,30 +115,30 @@ namespace Aircraft.Tracking.Api.Controllers
         }
 
 
-        //[HttpPost]
-        //[Route("SaveAircraftInformation")]
-        //public AircraftTrackerResponse SaveAircraftInformation([FromBody] AircraftInformation aircraftInformation)
-        //{
-        //    //var createdByName = User.Claims.FirstOrDefault(c => c.Type == "name")?.Value;
-        //    string base64Image = aircraftInformation.Base64AircraftImage;
-        //    string imageData = base64Image.Substring(base64Image.IndexOf(',') + 1);
+        [HttpPost]
+        [Route("SaveAircraftInformation")]
+        public AircraftTrackerResponse SaveAircraftInformation([FromBody] AircraftInformationModels aircraftInformationModels)
+        {
+            //var createdByName = User.Claims.FirstOrDefault(c => c.Type == "name")?.Value;
+            string base64Image = aircraftInformationModels.Base64AircraftImage;
+            string imageData = base64Image.Substring(base64Image.IndexOf(',') + 1);
 
-        //    aircraftInformation.AircraftImage = Convert.FromBase64String(imageData);
+            aircraftInformationModels.AircraftInformation.AircraftImage = Convert.FromBase64String(imageData);
 
-        //    //bool status = service.SaveAircraftInformation(teamModel, HttpContext, createdByName);
+            bool status = service.SaveAircraftInformation(aircraftInformationModels, HttpContext);
 
-        //    long id = service.Insert(aircraftInformation);
+            //long id = service.SaveAircraftInformation(aircraftInformationModels);
 
-        //    if (id > 0)
-        //    {
-        //        return this.response.GenerateResponseMessage("Success", "", "", "", "Created Successfully!");
-        //    }
-        //    else
-        //    {
-        //        return this.response.GenerateResponseMessage("Error", "", "", "", "Error Occured");
-        //    }
+            if (status)
+            {
+                return this.response.GenerateResponseMessage("Success", "", "", "", "Created Successfully!");
+            }
+            else
+            {
+                return this.response.GenerateResponseMessage("Error", "", "", "", "Error Occured");
+            }
 
-        //}
+        }
 
     }
 }

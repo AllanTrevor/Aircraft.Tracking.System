@@ -29,14 +29,23 @@ namespace Aircraft.Tracking.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddCors();
             services.AddMvc();
 
             //services.AddAutoMapper();
 
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
+            string reactWebServerUrl = Configuration["WebServers:ReactWebServer:Url"];
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    policy =>
+                    {
+                        policy.WithOrigins(reactWebServerUrl);
+                        policy.AllowAnyMethod();
+                        policy.AllowAnyHeader();
+                    });
+            });
 
             services.AddControllers();
 
@@ -70,22 +79,12 @@ namespace Aircraft.Tracking.Api
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
-            // Shows UseCors with CorsPolicyBuilder.
-            app.UseCors(builder =>
-                 builder.WithOrigins(reactWebServerUrl).AllowAnyHeader().AllowAnyMethod());
-
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Aircraft Tracking API V1");
             });
-
-
-
-
-
-
 
             if (env.IsDevelopment())
             {
@@ -97,6 +96,8 @@ namespace Aircraft.Tracking.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
