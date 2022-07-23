@@ -27,8 +27,9 @@ namespace Aircraft.Tracking.Api.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        public AircraftTrackerResponse GetAll(ActiveStatusEnum activeStatusEnum)
+        public AircraftTrackerResponse GetAll([FromQuery]ActiveStatusEnum activeStatusEnum)
         {
+
             var aircraftInformation = service.GetAll(activeStatusEnum);
             return this.response.GenerateResponseMessage("", "", " ", "", aircraftInformation);
         }
@@ -42,6 +43,7 @@ namespace Aircraft.Tracking.Api.Controllers
             {
                 return this.response.GenerateResponseMessage("Error", "", "", "", "Validations Failed");
             }
+            aircraftInformation.IsActive= true;
             aircraftInformation.CreatedDate = DateTime.Now;
             aircraftInformation.ModifiedDate = null;
             long id = service.Insert(aircraftInformation);
@@ -67,6 +69,7 @@ namespace Aircraft.Tracking.Api.Controllers
                 return this.response.GenerateResponseMessage("Error", "", "", "", "Validations Failed");
             }
 
+            aircraftInformation.IsActive = true;
             aircraftInformation.ModifiedDate = DateTime.Now;
 
             bool id = service.Update(aircraftInformation);
@@ -115,30 +118,30 @@ namespace Aircraft.Tracking.Api.Controllers
         }
 
 
-        [HttpPost]
-        [Route("SaveAircraftInformation")]
-        public AircraftTrackerResponse SaveAircraftInformation([FromBody] AircraftInformationModels aircraftInformationModels)
-        {
-            //var createdByName = User.Claims.FirstOrDefault(c => c.Type == "name")?.Value;
-            string base64Image = aircraftInformationModels.Base64AircraftImage;
-            string imageData = base64Image.Substring(base64Image.IndexOf(',') + 1);
+        //[HttpPost]
+        //[Route("SaveAircraftInformation")]
+        //public AircraftTrackerResponse SaveAircraftInformation([FromBody] AircraftInformationModels aircraftInformationModels)
+        //{
+        //    //var createdByName = User.Claims.FirstOrDefault(c => c.Type == "name")?.Value;
+        //    string base64Image = aircraftInformationModels.Base64AircraftImage;
+        //    string imageData = base64Image.Substring(base64Image.IndexOf(',') + 1);
 
-            aircraftInformationModels.AircraftInformation.AircraftImage = Convert.FromBase64String(imageData);
+        //    aircraftInformationModels.AircraftInformation.AircraftImage = Convert.FromBase64String(imageData);
 
-            bool status = service.SaveAircraftInformation(aircraftInformationModels, HttpContext);
+        //    bool status = service.SaveAircraftInformation(aircraftInformationModels, HttpContext);
 
-            //long id = service.SaveAircraftInformation(aircraftInformationModels);
+        //    //long id = service.SaveAircraftInformation(aircraftInformationModels);
 
-            if (status)
-            {
-                return this.response.GenerateResponseMessage("Success", "", "", "", "Created Successfully!");
-            }
-            else
-            {
-                return this.response.GenerateResponseMessage("Error", "", "", "", "Error Occured");
-            }
+        //    if (status)
+        //    {
+        //        return this.response.GenerateResponseMessage("Success", "", "", "", "Created Successfully!");
+        //    }
+        //    else
+        //    {
+        //        return this.response.GenerateResponseMessage("Error", "", "", "", "Error Occured");
+        //    }
 
-        }
+        //}
 
     }
 }

@@ -10,7 +10,12 @@ const httpGet = (endpoint) => {
       ...config.options,
     })
       .then((response) => handleResponse(response))
-      .then((response) => response.data)
+      .then((response) => {
+        if(response && (response.data == undefined || response.data ==null)){
+          throw Error("No data found");
+        }
+        return response.data
+      })
       .catch((error) => {
         console.error(error);
         throw Error(error);
