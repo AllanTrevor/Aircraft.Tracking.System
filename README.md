@@ -6,6 +6,8 @@ Excecute the script provided in [Scripts/db-feed.sql](Scripts/db-feed.sql) to cr
 
 ## API Project
 
+Execute below commands in [Source/Aircraft.Tracking.API](Source/Aircraft.Tracking.API) directory
+
 ### `dotnet restore`
 
 ### `dotnet build`
@@ -16,6 +18,8 @@ Runs the app in the development mode withwatching file changes.\
 Open [http://localhost:8080/swagger](http://localhost:8080/swagger) to view Swagger Page.
 
 ## Client App
+
+Execute below commands in [Source/aircraft-tracking-web](Source/aircraft-tracking-web) directory
 
 ### `npm i`
 
