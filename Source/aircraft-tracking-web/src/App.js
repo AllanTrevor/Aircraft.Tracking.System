@@ -12,7 +12,6 @@ import {
 import useBreadcrumbs from "use-react-router-breadcrumbs";
 
 import Home from "./pages/home/Home.js";
-import Aircraft from "./pages/aircraft/Aircraft.js";
 import View from "./pages/aircraft/View";
 import Edit from "./pages/aircraft/Edit";
 
