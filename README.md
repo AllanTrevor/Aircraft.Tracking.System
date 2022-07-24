@@ -7,8 +7,8 @@
 - SQL Server >v2012
 - Visual Studio >2019 (for API project)
 - Visual Studio Code (for ReactJS app)
-
-Excecute the script provided in [Scripts/db-feed.sql](Scripts/db-feed.sql) to create the Database & feed sample data.
+- Excecute the script provided in [Scripts/db-feed.sql](Scripts/db-feed.sql) to create the Database & feed sample data.
+- Change connection string in [Source/Aircraft.Tracking.API/Aircraft.Tracking.Api/appsettings.json](Source/Aircraft.Tracking.API/Aircraft.Tracking.Api/appsettings.json) (ConnectionStrings::SqlConnectionString)
 
 ## API Project
 
