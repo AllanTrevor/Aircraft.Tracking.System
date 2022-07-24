@@ -9,9 +9,8 @@ import reportWebVitals from "./reportWebVitals";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
-library.add(fas, faPenToSquare, faTrashCan);
+library.add(fas);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -37,8 +37,6 @@ namespace Aircraft.Tracking.Core.Poco
 		public bool IsActive { get; set; }
 
 		public string AircraftImage { get; set; }
-		
-		//public string AircraftImageData { get; set; }
 
 	}
 

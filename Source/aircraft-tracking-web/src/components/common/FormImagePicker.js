@@ -113,7 +113,7 @@ const FormImagePicker = ({
               </Form.Control.Feedback>
             </InputGroup>
             <div className="mt-2">
-              <img src={_formRef.values[_fieldName.split('Path')[0]]} alt="" />
+              <img className="img-thumbnail rounded" src={_formRef.values[_fieldName.split('Path')[0]]} alt="" />
             </div>
           </Form.Group>
         );

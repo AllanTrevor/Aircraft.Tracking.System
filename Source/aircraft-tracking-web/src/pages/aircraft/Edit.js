@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Button, Col, Form } from "react-bootstrap";
+import { Button, Col, Row, Form, Container } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import FormTextField from "../../components/common/FormField.js";
 import FormDateTimePicker from "../../components/common/FormDateTimePicker.js";
@@ -25,6 +26,7 @@ function Edit() {
     },
     setAircraft,
   ] = useState();
+
   const [loading, setLoading] = useState(false);
 
   let navigate = useNavigate();
@@ -32,11 +34,18 @@ function Edit() {
   const schema = object().shape({
     registration: string()
       .required()
-      .matches(/^([A-Z0-9]{1,2})-([A-Z0-9]{1,5})$/, "Format should be \"[A-Z0-9]{1,2})-([A-Z0-9]{1,5}\"")
+      .matches(
+        /^([A-Za-z0-9]{1,2})-([A-Za-z0-9]{1,5})$/,
+        'Format should be "[A-Za-z0-9]{1,2})-([A-Z0-9]{1,5}"'
+      )
       .max(8, "Registration must be less than 8 charactors"),
-    make: string().required().max(128, "Registration must be less than 128 charactors"),
-    model: string().required().max(128, "Registration must be less than 128 charactors"),
-    location: string().required().max(225, "Registration must be less than 225 charactors"),
+    make: string().required().max(128, "Make must be less than 128 charactors"),
+    model: string()
+      .required()
+      .max(128, "Model must be less than 128 charactors"),
+    location: string()
+      .required()
+      .max(225, "Location must be less than 225 charactors"),
     spottedOn: date()
       .required()
       .max(new Date(), "Spotted Date must be in past"),
@@ -45,6 +54,7 @@ function Edit() {
   });
 
   let { id } = useParams();
+  let pageTitle = id > 0 ? "Edit" : "Add";
 
   useEffect(() => {
     const GetAircraft = async (id) => {
@@ -82,116 +92,130 @@ function Edit() {
   };
 
   return (
-    <div>
-      {loading && <h1>Loading...</h1>}
-      {!loading && aircraft && (
-        <Formik
-          validationSchema={schema}
-          onSubmit={handleSubmit}
-          initialValues={aircraft}
-        >
-          {({
-            handleSubmit,
-            handleChange,
-            values,
-            errors,
-            isValid,
-            isSubmitting,
-            validateField,
-          }) => (
-            <Form onSubmit={handleSubmit}>
-              <Col>
-                <FormTextField
-                  as={Col}
-                  sm="4"
-                  controlId="registration"
-                  label="Registration"
-                  type="text"
-                  name="registration"
-                />
-              </Col>
-              <Col>
-                <FormTextField
-                  as={Col}
-                  sm="4"
-                  controlId="make"
-                  label="Make"
-                  type="text"
-                  name="make"
-                />
-              </Col>
-              <Col>
-                <FormTextField
-                  as={Col}
-                  sm="4"
-                  controlId="model"
-                  label="Model"
-                  type="text"
-                  name="model"
-                />
-              </Col>
-              <Col>
-                <FormTextField
-                  as={Col}
-                  sm="4"
-                  controlId="location"
-                  label="location"
-                  type="text"
-                  name="location"
-                />
-              </Col>
-              <Col>
-                <FormDateTimePicker
-                  as={Col}
-                  sm="4"
-                  controlId="spottedOn"
-                  label="Spotted On"
-                  name="spottedOn"
-                />
-              </Col>
-              <Col>
-                <FormImagePicker
-                  as={Col}
-                  sm="4"
-                  controlId="aircraftImagePath"
-                  label="Image"
-                  name="aircraftImagePath"
-                  _validateField={validateField}
-                />
-                <FormTextField
-                  style={{ display: "none" }}
-                  as={Col}
-                  sm="4"
-                  controlId="aircraftImage"
-                  label=""
-                  type="hidden"
-                  name="aircraftImage"
-                />
-              </Col>
-              <Col>
-                <Button
-                  disabled={!isValid || isSubmitting}
-                  variant="success"
-                  as="input"
-                  size="lg"
-                  type="submit"
-                  value="Submit"
-                />
-              </Col>
-
-              {/* <Col>
-                <pre style={{ margin: "0 auto" }}>
-                  {JSON.stringify(
-                    { ...values, ...errors, isValid, isSubmitting },
-                    null,
-                    2
-                  )}
-                </pre>
-              </Col> */}
-            </Form>
-          )}
-        </Formik>
-      )}
+    <div className="jumbotron">
+      <Container>
+        <Row className="mb-4">
+          <Col>
+            <h2 className="card-header">{pageTitle} Spotted Aircraft Detail</h2>
+          </Col>
+        </Row>
+        {loading && (
+          <div className="progress">
+            <div className="progress-bar w-75"></div>
+          </div>
+        )}
+        {!loading && aircraft && (
+          <Row>
+            <Formik
+              validationSchema={schema}
+              onSubmit={handleSubmit}
+              initialValues={aircraft}
+            >
+              {({
+                handleSubmit,
+                handleChange,
+                values,
+                errors,
+                isValid,
+                isSubmitting,
+                validateField,
+              }) => (
+                <Form onSubmit={handleSubmit}>
+                  <Row>
+                    <Col>
+                      <FormTextField
+                        as={Col}
+                        sm="4"
+                        controlId="registration"
+                        label="Registration"
+                        type="text"
+                        name="registration"
+                      />
+                    </Col>
+                    <Col>
+                      <FormTextField
+                        as={Col}
+                        sm="4"
+                        controlId="make"
+                        label="Make"
+                        type="text"
+                        name="make"
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <FormTextField
+                        as={Col}
+                        sm="4"
+                        controlId="model"
+                        label="Model"
+                        type="text"
+                        name="model"
+                      />
+                    </Col>
+                    <Col>
+                      <FormTextField
+                        as={Col}
+                        sm="4"
+                        controlId="location"
+                        label="location"
+                        type="text"
+                        name="location"
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <FormImagePicker
+                        as={Col}
+                        sm="4"
+                        controlId="aircraftImagePath"
+                        label="Image"
+                        name="aircraftImagePath"
+                        _validateField={validateField}
+                      />
+                      <FormTextField
+                        style={{ display: "none" }}
+                        as={Col}
+                        sm="4"
+                        controlId="aircraftImage"
+                        label=""
+                        type="hidden"
+                        name="aircraftImage"
+                      />
+                    </Col>
+                    <Col>
+                      <FormDateTimePicker
+                        as={Col}
+                        sm="4"
+                        controlId="spottedOn"
+                        label="Spotted On"
+                        name="spottedOn"
+                      />
+                    </Col>
+                  </Row>
+                  <Row className="mb-4">
+                    <Col>
+                      <Col>
+                        <Button
+                          disabled={!isValid || isSubmitting}
+                          type="submit"
+                          variant="primary"
+                          value="Submit"
+                        >
+                          <FontAwesomeIcon icon="fa-solid fa-floppy-disk" />{" "}
+                          Save
+                        </Button>
+                      </Col>
+                    </Col>
+                  </Row>
+                </Form>
+              )}
+            </Formik>
+          </Row>
+        )}
+      </Container>
     </div>
   );
 }

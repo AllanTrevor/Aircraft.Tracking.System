@@ -27,6 +27,7 @@ const FormDateTimePicker = ({
                   isValid={form.touched[field.name] && isValid}
                   isInvalid={isInvalid}
                   feedback={form.errors[field.name]}
+                  className="datepicker"
                 />
               <Form.Control.Feedback type="invalid">
                 {form.errors[field.name]}

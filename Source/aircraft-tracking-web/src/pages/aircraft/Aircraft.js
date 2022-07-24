@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, useParams } from "react-router-dom";
 
 import ApiService from "../../api/Api.service.js";
 
@@ -29,11 +26,19 @@ function Aircraft() {
 
   return (
     <div>
-      {loading && <h1>Loading...</h1>}
-      {(!loading && aircraft) && <div className="container-fluid">
-        <h2>{aircraft.registration}</h2>
-      </div>}
-      
+      {loading && (
+        // <h1>Loading...</h1>
+        
+          <div className="progress">
+            <div className="progress-bar w-75"></div>
+          </div>
+        
+      )}
+      {!loading && aircraft && (
+        <div className="container-fluid">
+          <h2>{aircraft.registration}</h2>
+        </div>
+      )}
     </div>
   );
 }

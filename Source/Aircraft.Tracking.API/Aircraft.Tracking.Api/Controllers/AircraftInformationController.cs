@@ -85,13 +85,18 @@ namespace Aircraft.Tracking.Api.Controllers
 
 
         [HttpPost]
-        [Route("Delete")]
-        public AircraftTrackerResponse Delete([FromBody] AircraftInformation aircraftInformation)
+        [Route("Delete/{id:int}")]
+        public AircraftTrackerResponse Delete([FromRoute] int Id)
         {
-
+            var aircraftInformation = service.Get(Id);
+            if(aircraftInformation == null)
+            {
+                return this.response.GenerateResponseMessage("Error", "", "", "", "Record Not Found");
+            }
+            aircraftInformation.IsActive = false;
             aircraftInformation.ModifiedDate = DateTime.Now;
 
-            bool id = service.Delete(aircraftInformation);
+            bool id = service.Update(aircraftInformation);
             if (id == true)
             {
                 return this.response.GenerateResponseMessage("Success", "", "", "", "Deleted Successfully!");
