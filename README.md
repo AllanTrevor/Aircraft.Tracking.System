@@ -2,6 +2,12 @@
 
 ## Prerequisits
 
+- dotnet v5.0
+- NodeJS >v14
+- SQL Server >v2012
+- Visual Studio >2019 (for API project)
+- Visual Studio Code (for ReactJS app)
+
 Excecute the script provided in [Scripts/db-feed.sql](Scripts/db-feed.sql) to create the Database & feed sample data.
 
 ## API Project
