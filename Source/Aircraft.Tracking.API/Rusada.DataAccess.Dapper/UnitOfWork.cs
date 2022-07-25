@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-
-using Dapper;
 
 using Rusada.Core.Data;
 
@@ -40,69 +37,6 @@ namespace Rusada.DataAccess.Dapper
 			return Repositories[type];
 		}
 
-		public object GetDataBySql(string sql)
-		{
-			using (var connection = connectionFactory.GetConnection())
-			{
-				connection.Open();
-				object result = connection.ExecuteScalar(sql);
-				return result;
-			}
-		}
-
-		public object GetEntitiesBySP(string storedProcedureName, Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters)
-		{
-			DynamicParameters dynamicParameters = new DynamicParameters();
-
-			foreach (KeyValuePair<string, Tuple<string, DbType, ParameterDirection>> entry in parameters)
-			{
-				dynamicParameters.Add(entry.Key, entry.Value.Item1, entry.Value.Item2, entry.Value.Item3);
-			}
-
-			using (var connection = connectionFactory.GetConnection())
-			{
-				connection.Open();
-
-				var result = connection.ExecuteReader(
-					storedProcedureName,
-					param: dynamicParameters,
-					commandType: CommandType.StoredProcedure);
-
-				while (result.Read())
-				{
-					return result[0];
-				}
-
-				return null;
-			}
-		}
-
-		public int GetStatusByExecuteSP(string storedProcedureName, Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters)
-		{
-			DynamicParameters dynamicParameters = new DynamicParameters();
-
-			foreach (KeyValuePair<string, Tuple<string, DbType, ParameterDirection>> entry in parameters)
-			{
-				dynamicParameters.Add(entry.Key, entry.Value.Item1, entry.Value.Item2, entry.Value.Item3);
-			}
-
-			using (var connection = connectionFactory.GetConnection())
-			{
-				connection.Open();
-
-				var result = connection.ExecuteReader(
-					storedProcedureName,
-					param: dynamicParameters,
-					commandType: CommandType.StoredProcedure);
-
-				while (result.Read())
-				{
-					return (int)result[0];
-				}
-
-				return -1;
-			}
-		}
-
+		
 	}
 }

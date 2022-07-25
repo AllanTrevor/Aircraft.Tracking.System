@@ -1,5 +1,4 @@
 ﻿using Dapper.Contrib.Extensions;
-
 using Rusada.Core.Data;
 using Aircraft.Tracking.Core.Poco;
 using System;
@@ -39,15 +38,6 @@ namespace Aircraft.Tracking.DataAccess.Dapper
 
 			}
 
-
-			//public static AircraftInformation Get(this IRepository<AircraftInformation> repository, int id)
-			//      {
-			//          using (var connection = repository.GetConnectionFactory().GetConnection())
-			//          {
-			//              connection.Open();
-			//              return connection.Get<AircraftInformation>(id);
-			//          }
-			//      }
 
 		}
 	}

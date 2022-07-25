@@ -18,12 +18,5 @@ namespace Rusada.Core.Data
 
 		bool Delete(TEntity entity);
 
-		IEnumerable<TEntity> GetEntitiesBySP(string storedProcedureName,
-			Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters);
-
-		TEntity GetEntityBySP(string storedProcedureName,
-			Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters);
-
-		IEnumerable<TEntity> GetEntitiesBySql(string sql);
 	}
 }

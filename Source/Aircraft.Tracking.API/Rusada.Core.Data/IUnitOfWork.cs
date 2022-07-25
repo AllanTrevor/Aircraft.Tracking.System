@@ -16,15 +16,5 @@ namespace Rusada.Core.Data
 		/// <returns></returns>
 		IRepository<TEntity> Repository<TEntity>() where TEntity : class;
 
-		/// <summary>
-		/// Gets the data by SQL.
-		/// </summary>
-		/// <param name="sql">The SQL.</param>
-		/// <returns></returns>
-		object GetDataBySql(string sql);
-
-		object GetEntitiesBySP(string storedProcedureName, Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters);
-
-		int GetStatusByExecuteSP(string storedProcedureName, Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters);
 	}
 }

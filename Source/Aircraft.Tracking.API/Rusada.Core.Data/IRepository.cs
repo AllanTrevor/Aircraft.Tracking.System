@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 
 namespace Rusada.Core.Data
 {
@@ -51,25 +49,6 @@ namespace Rusada.Core.Data
 		/// <returns></returns>
 		bool Delete(TEntity entity);
 
-		/// <summary>
-		/// Gets the entities by sp.
-		/// </summary>
-		/// <param name="storedProcedureName">Name of the stored procedure.</param>
-		/// <param name="parameters">The parameters.</param>
-		/// <returns></returns>
-		IEnumerable<TEntity> GetEntitiesBySP(string storedProcedureName, Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters);
-
-		TEntity GetEntityBySP(string storedProcedureName, Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters);
-
-		IEnumerable<TEntity> GetEntitiesBySql(string sql);
-
-		int ExecuteSPWithOutPut(string storedProcedureName, Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters);
-
-		int ExecuteSPWithInputOutput(string storedProcedureName, Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters);
-
-		bool ExecuteSPWithBooleanInputOutput(string storedProcedureName, Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters);
-
-		void ExecuteSP(string storedProcedureName, Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters);
 		IConnectionFactory GetConnectionFactory();
 
 	}

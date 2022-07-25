@@ -46,19 +46,5 @@ namespace Aircraft.Tracking.Services
 			return unitOfWork.Repository<TEntity>().Delete(entity);
 		}
 
-		public IEnumerable<TEntity> GetEntitiesBySP(string storedProcedureName, Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters)
-		{
-			throw new NotImplementedException();
-		}
-
-		public IEnumerable<TEntity> GetEntitiesBySql(string sql)
-		{
-			throw new NotImplementedException();
-		}
-
-		public TEntity GetEntityBySP(string storedProcedureName, Dictionary<string, Tuple<string, DbType, ParameterDirection>> parameters)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

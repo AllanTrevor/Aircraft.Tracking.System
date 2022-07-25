@@ -1,12 +1,10 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Rusada.Core.Data;
-//using Aircraft.Tracking.Core.Common;
 using Aircraft.Tracking.Core.Poco;
 using Aircraft.Tracking.Core.Services;
 using Aircraft.Tracking.Api.Common;
 using AutoMapper;
-using Aircraft.Tracking.Core.Models;
 
 namespace Aircraft.Tracking.Api.Controllers
 {
@@ -14,14 +12,14 @@ namespace Aircraft.Tracking.Api.Controllers
     {
         private readonly IAircraftInformationService service;
         private readonly IAircraftTrackerResponse response;     
-        private readonly IMapper mapper;
+        //private readonly IMapper mapper;
 
 
         public AircraftInformationController(IAircraftInformationService service, IAircraftTrackerResponse response, IMapper mapper)
         {
             this.service = service;
             this.response = response;
-            this.mapper = mapper;
+            //this.mapper = mapper;
 
         }
 
@@ -121,32 +119,6 @@ namespace Aircraft.Tracking.Api.Controllers
                 return this.response.GenerateResponseMessage("Error", "", "", "", aircraftInformation);
             }
         }
-
-
-        //[HttpPost]
-        //[Route("SaveAircraftInformation")]
-        //public AircraftTrackerResponse SaveAircraftInformation([FromBody] AircraftInformationModels aircraftInformationModels)
-        //{
-        //    //var createdByName = User.Claims.FirstOrDefault(c => c.Type == "name")?.Value;
-        //    string base64Image = aircraftInformationModels.Base64AircraftImage;
-        //    string imageData = base64Image.Substring(base64Image.IndexOf(',') + 1);
-
-        //    aircraftInformationModels.AircraftInformation.AircraftImage = Convert.FromBase64String(imageData);
-
-        //    bool status = service.SaveAircraftInformation(aircraftInformationModels, HttpContext);
-
-        //    //long id = service.SaveAircraftInformation(aircraftInformationModels);
-
-        //    if (status)
-        //    {
-        //        return this.response.GenerateResponseMessage("Success", "", "", "", "Created Successfully!");
-        //    }
-        //    else
-        //    {
-        //        return this.response.GenerateResponseMessage("Error", "", "", "", "Error Occured");
-        //    }
-
-        //}
 
     }
 }
