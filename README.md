@@ -1,6 +1,6 @@
 # Spotted Aircrafts Tracking System
 
-## Prerequisits
+## Dev Environment Prerequisits
 
 - dotnet v5.0
 - NodeJS >v14
@@ -10,7 +10,7 @@
 - Excecute the script provided in [Scripts/db-feed.sql](Scripts/db-feed.sql) to create the Database & feed sample data.
 - Change connection string in [Source/Aircraft.Tracking.API/Aircraft.Tracking.Api/appsettings.json](Source/Aircraft.Tracking.API/Aircraft.Tracking.Api/appsettings.json) (ConnectionStrings::SqlConnectionString)
 
-## API Project
+## How to Run API Project
 
 Execute below commands in [Source/Aircraft.Tracking.API](Source/Aircraft.Tracking.API) directory
 
@@ -23,7 +23,7 @@ Execute below commands in [Source/Aircraft.Tracking.API](Source/Aircraft.Trackin
 Runs the app in the development mode withwatching file changes.\
 Open [http://localhost:8080/swagger](http://localhost:8080/swagger) to view Swagger Page.
 
-## Client App
+## How to Run Client App
 
 Execute below commands in [Source/aircraft-tracking-web](Source/aircraft-tracking-web) directory
 
