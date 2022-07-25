@@ -21,12 +21,17 @@ function Home() {
   useEffect(() => {
     setDeletingAircraft(0);
     GetAircrafts();
+    setShow(false);
   }, []);
 
   const GetAircrafts = async () => {
     try {
       setLoading(true);
-      searchRef.current.value = "";
+      if (searchRef && searchRef.current) {
+        searchRef.current.value = "";
+      } else {
+        document.getElementById("txtSearch").value = "";
+      }
       const result = await ApiService.httpGet("/GetAll");
       setAircrafts(result);
       setFilteredAircrafts(result);
@@ -52,7 +57,7 @@ function Home() {
       setLoading(true);
       const deleteResult = await ApiService.httpPost("/Delete/" + id);
       setLoading(false);
-      GetAircrafts();
+      await GetAircrafts();
     } catch (err) {
       setLoading(false);
     }
@@ -66,6 +71,7 @@ function Home() {
   return (
     <>
       <Confirmation
+        key={deletingAircraftId}
         title="Delete Aircraft"
         message="Do you want to delete Aircraft?"
         showModel={showModel}
@@ -87,12 +93,18 @@ function Home() {
               <Stack direction="horizontal" gap={0}>
                 <input
                   ref={searchRef}
+                  id="txtSearch"
                   className="form-control form-control-sm mr-sm-2"
                   type="text"
                   placeholder="Search"
                   onChange={(e) => searchAircrafts(e.target.value)}
                 />
-                <Button type="button" variant="primary" size="sm" onClick={GetAircrafts}>
+                <Button
+                  type="button"
+                  variant="primary"
+                  size="sm"
+                  onClick={GetAircrafts}
+                >
                   <FontAwesomeIcon icon="fa-solid fa-arrows-rotate" />
                 </Button>
               </Stack>

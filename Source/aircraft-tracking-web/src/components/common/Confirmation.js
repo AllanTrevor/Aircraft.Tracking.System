@@ -6,7 +6,7 @@ import Moment from "react-moment";
 export default function Confirmation(props) {
   let { title, message, showModel, doConfirm, doReject } = props;
 
-  const [show = showModel, setShow] = useState(false);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     setShow(showModel);
