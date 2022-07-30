@@ -4,33 +4,33 @@ namespace Aircraft.Tracking.Api.Common
 {
     public class AircraftTrackerResponse : IAircraftTrackerResponse
     {
-        public string SuccessString = string.Empty;
-        public string ErrorString = string.Empty;
-        public string LockedMessage = string.Empty;
+        public string SuccessString { get; set; }
+        public string ErrorString { get; set; }
+        public string LockedMessage { get; set; }
         public string Result { get; set; }
         public object Data { get; set; }
 
 
-		public AircraftTrackerResponse GenerateResponseMessage(string successString, string errorString, string lockedMessage, string result, Dictionary<string, object> dattaHoldDictionary)
-		{
-			this.SuccessString = successString;
-			this.ErrorString = errorString;
-			this.LockedMessage = lockedMessage;
-			this.Data = dattaHoldDictionary;
+        public AircraftTrackerResponse GenerateResponseMessage(string successString, string errorString, string lockedMessage, string result, Dictionary<string, object> dattaHoldDictionary)
+        {
+            this.SuccessString = successString;
+            this.ErrorString = errorString;
+            this.LockedMessage = lockedMessage;
+            this.Data = dattaHoldDictionary;
 
-			return this;
-		}
+            return this;
+        }
 
-		public AircraftTrackerResponse GenerateResponseMessage(string successString, string errorString, string lockedMessage, string result, object data)
-		{
-			this.SuccessString = successString;
-			this.ErrorString = errorString;
-			this.LockedMessage = lockedMessage;
-			this.Data = data;
+        public AircraftTrackerResponse GenerateResponseMessage(string successString, string errorString, string lockedMessage, string result, object data)
+        {
+            this.SuccessString = successString;
+            this.ErrorString = errorString;
+            this.LockedMessage = lockedMessage;
+            this.Data = data;
 
-			return this;
-		}
+            return this;
+        }
 
 
-	}
+    }
 }

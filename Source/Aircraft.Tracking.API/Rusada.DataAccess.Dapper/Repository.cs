@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Transactions;
 using Dapper.Contrib.Extensions;
 
@@ -21,6 +22,15 @@ namespace Rusada.DataAccess.Dapper
             {
                 connection.Open();
                 return connection.Get<TEntity>(id);
+            }
+        }
+
+        public async Task<TEntity> GetAsync(string id)
+        {
+            using (var connection = connectionFactory.GetConnection())
+            {
+                connection.Open();
+                return await connection.GetAsync<TEntity>(id);
             }
         }
 

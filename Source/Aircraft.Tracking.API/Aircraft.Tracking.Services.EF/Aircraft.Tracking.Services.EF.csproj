@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rusada.Core.Data.EF\Rusada.Core.Data.EF.csproj" />
+  </ItemGroup>
+
+</Project>

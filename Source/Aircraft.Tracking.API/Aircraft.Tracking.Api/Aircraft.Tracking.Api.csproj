@@ -17,9 +17,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Aircraft.Tracking.Core\Aircraft.Tracking.Core.csproj" />
     <ProjectReference Include="..\Aircraft.Tracking.DataAccess.Dapper\Aircraft.Tracking.DataAccess.Dapper.csproj" />
+    <ProjectReference Include="..\Aircraft.Tracking.Services.EF\Aircraft.Tracking.Services.EF.csproj" />
     <ProjectReference Include="..\Aircraft.Tracking.Services\Aircraft.Tracking.Services.csproj" />
     <ProjectReference Include="..\Rusada.Core.Data\Rusada.Core.Data.csproj" />
     <ProjectReference Include="..\Rusada.DataAccess.Dapper\Rusada.DataAccess.Dapper.csproj" />
+    <ProjectReference Include="..\Rusada.DataAccess.EF\Rusada.DataAccess.EF.csproj" />
   </ItemGroup>
 
 </Project>

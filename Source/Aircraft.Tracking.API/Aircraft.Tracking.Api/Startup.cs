@@ -13,14 +13,29 @@ using Aircraft.Tracking.Core;
 using Aircraft.Tracking.Core.Common;
 using Aircraft.Tracking.Api.Common;
 using Aircraft.Tracking.Core.Utility;
+using Rusada.DataAccess.EF;
+using Microsoft.EntityFrameworkCore;
+using Rusada.Core.Data.EF;
+using Aircraft.Tracking.Services.EF;
+using System;
 
 namespace Aircraft.Tracking.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public string ContentRootPath { get; }
+
+        public Startup(IHostEnvironment env)
         {
-            Configuration = configuration;
+            ContentRootPath = env.ContentRootPath;
+            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            IConfigurationBuilder builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{environment}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -49,14 +64,26 @@ namespace Aircraft.Tracking.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Aircraft.Tracking.Api", Version = "v1" });
             });
 
+            services.AddTransient<IAircraftTrackerAPIResponse, AircraftTrackerAPIResponse>();
+
             services.AddTransient<IAircraftTrackerResponse, AircraftTrackerResponse>();
+
+            //Dapper
             services.AddTransient<IAircraftTrackingUnitOfWork, AircraftTrackingUnitOfWork>(ctx =>
             {
                 IConnectionFactory connectionFactory = new AircraftTrackerConnectionFactory(Configuration.GetConnectionString("SqlConnectionString"));
                 return new AircraftTrackingUnitOfWork(connectionFactory);
             });
-            services.AddTransient<IAircraftTrackerAPIResponse, AircraftTrackerAPIResponse>();
+
             services.AddTransient<IAircraftInformationService, AircraftInformationService>();
+
+            //EF
+            services.AddTransient<IAircraftRepository, AircraftRepository>();
+            services.AddTransient<IAircraftUnitOfWork, AircraftUnitOfWork>();
+            services.AddTransient<IAircraftService, AircraftService>();
+            services.AddDbContext<AircraftDbContext>(options => options.UseSqlServer(
+                    Configuration.GetConnectionString("EFSqlConnectionString")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

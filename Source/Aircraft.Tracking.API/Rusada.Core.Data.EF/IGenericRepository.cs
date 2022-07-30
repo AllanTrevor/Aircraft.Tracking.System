@@ -1,23 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace Rusada.Core.Data
+namespace Rusada.Core.Data.EF
 {
 	/// <summary>
 	/// Generic repository interface.
 	/// </summary>
 	/// <typeparam name="TEntity">The type of the entity.</typeparam>
-	public interface IRepository<TEntity> where TEntity : class
+	public interface IGenericRepository<TEntity> where TEntity : class
 	{
-		/// <summary>
-		/// Gets the specified identifier.
-		/// </summary>
-		/// <param name="id">The identifier.</param>
-		/// <returns></returns>
-		TEntity Get(string id);
-		
-		Task<TEntity> GetAsync(string id);
-
 		/// <summary>
 		/// Gets the specified identifier.
 		/// </summary>
@@ -25,34 +20,35 @@ namespace Rusada.Core.Data
 		/// <returns></returns>
 		TEntity Get(int id);
 
+
+		Task<TEntity> GetAsync(int id);
+
 		/// <summary>
 		/// Gets all.
 		/// </summary>
 		/// <returns></returns>
 		IEnumerable<TEntity> GetAll();
 
+		IEnumerable<TEntity> FindAll(Expression<Func<TEntity, bool>> match);
+
 		/// <summary>
 		/// Inserts the specified entity.
 		/// </summary>
 		/// <param name="entity">The entity.</param>
 		/// <returns></returns>
-		long Insert(TEntity entity);
+		TEntity Insert(TEntity entity);
 
 		/// <summary>
 		/// Updates the specified entity.
 		/// </summary>
 		/// <param name="entity">The entity.</param>
 		/// <returns></returns>
-		bool Update(TEntity entity);
+		TEntity Update(TEntity entity);
 
 		/// <summary>
 		/// Deletes the specified entity.
 		/// </summary>
 		/// <param name="entity">The entity.</param>
-		/// <returns></returns>
-		bool Delete(TEntity entity);
-
-		IConnectionFactory GetConnectionFactory();
-
+		void Delete(TEntity entity);
 	}
 }

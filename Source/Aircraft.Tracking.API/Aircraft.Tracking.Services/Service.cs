@@ -4,14 +4,15 @@ using System.Data;
 
 using Rusada.Core.Data;
 using Aircraft.Tracking.Core;
+using System.Threading.Tasks;
 
 namespace Aircraft.Tracking.Services
 {
 	public abstract class Service<TEntity> : IService<TEntity> where TEntity : class
 	{
-		private readonly IAircraftTrackingUnitOfWork unitOfWork;
+		private readonly IUnitOfWork unitOfWork;
 
-		public Service(IAircraftTrackingUnitOfWork unitOfWork)
+		public Service(IUnitOfWork unitOfWork)
 		{
 			this.unitOfWork = unitOfWork;
 		}
@@ -19,6 +20,11 @@ namespace Aircraft.Tracking.Services
 		public TEntity Get(string id)
 		{
 			return unitOfWork.Repository<TEntity>().Get(id);
+		}
+
+		public async Task<TEntity> GetAsync(string id)
+		{
+			return await unitOfWork.Repository<TEntity>().GetAsync(id);
 		}
 
 		public TEntity Get(int id)
